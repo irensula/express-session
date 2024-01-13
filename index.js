@@ -5,7 +5,7 @@ const session = require('express-session');
 app.use(session({ secret: 'thisisnotagoodsecret' }));
 
 app.get('/viewcount', (req, res) => {
-    if(req.session.count += 1) {
+    if(req.session.count) {
         req.session.count += 1;
     } else {
         req.session.count = 1;
