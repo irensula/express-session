@@ -5,7 +5,12 @@ const session = require('express-session');
 app.use(session({ secret: 'thisisnotagoodsecret' }));
 
 app.get('/viewcount', (req, res) => {
-    res.send('You have viewed this page x times');
+    if(req.session.count += 1) {
+        req.session.count += 1;
+    } else {
+        req.session.count = 1;
+    }
+    res.send(`You have viewd this page ${req.session.count} times`);
 });
 
 app.listen(3000, () => {
